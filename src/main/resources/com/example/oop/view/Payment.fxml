@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.oop.controller.PaymentController"
+            style="-fx-background-color: #1a1a2e;">
+
+    <VBox spacing="20.0"
+          AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding><Insets top="30.0" bottom="30.0" left="30.0" right="30.0"/></padding>
+
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label text="💰  Payment Management"
+                   style="-fx-text-fill: #ffffff; -fx-font-weight: bold;">
+                <font><Font name="System Bold" size="22.0"/></font>
+            </Label>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchStudentId" promptText="Search by Student ID..."
+                       prefHeight="36.0" prefWidth="200.0"
+                       style="-fx-background-color: #16213e; -fx-text-fill: #ffffff; -fx-prompt-text-fill: #a8a8b3; -fx-background-radius: 8; -fx-border-color: #0f3460; -fx-border-radius: 8; -fx-border-width: 1; -fx-padding: 5 10 5 10;">
+                <font><Font size="13.0"/></font>
+            </TextField>
+            <Button text="Search" onAction="#handleSearch" prefHeight="36.0"
+                    style="-fx-background-color: #0f3460; -fx-text-fill: white; -fx-background-radius: 8; -fx-cursor: hand;">
+                <font><Font size="13.0"/></font>
+            </Button>
+            <Button text="+ Record Payment" onAction="#showAddPaymentDialog" prefHeight="36.0"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;">
+                <font><Font size="13.0"/></font>
+            </Button>
+        </HBox>
+
+        <!-- Revenue Cards -->
+        <HBox spacing="15.0">
+            <VBox prefWidth="180.0" prefHeight="80.0" alignment="CENTER" spacing="5.0"
+                  style="-fx-background-color: #16213e; -fx-background-radius: 10;">
+                <Label fx:id="totalRevenueCard" text="Rs.0"
+                       style="-fx-text-fill: #e94560; -fx-font-weight: bold;">
+                    <font><Font name="System Bold" size="22.0"/></font>
+                </Label>
+                <Label text="Total Revenue" style="-fx-text-fill: #a8a8b3;"><font><Font size="12.0"/></font></Label>
+            </VBox>
+            <VBox prefWidth="180.0" prefHeight="80.0" alignment="CENTER" spacing="5.0"
+                  style="-fx-background-color: #16213e; -fx-background-radius: 10;">
+                <Label fx:id="totalPaymentsCard" text="0"
+                       style="-fx-text-fill: #4ade80; -fx-font-weight: bold;">
+                    <font><Font name="System Bold" size="26.0"/></font>
+                </Label>
+                <Label text="Payments Made" style="-fx-text-fill: #a8a8b3;"><font><Font size="12.0"/></font></Label>
+            </VBox>
+        </HBox>
+
+        <!-- Table -->
+        <TableView fx:id="paymentTable" VBox.vgrow="ALWAYS"
+                   style="-fx-background-color: #16213e; -fx-background-radius: 12; -fx-border-color: transparent;">
+            <columns>
+                <TableColumn fx:id="colPayId"      text="Payment ID"  prefWidth="110.0"/>
+                <TableColumn fx:id="colPayStuId"   text="Student ID"  prefWidth="100.0"/>
+                <TableColumn fx:id="colPayAmount"  text="Amount"      prefWidth="100.0"/>
+                <TableColumn fx:id="colPayDate"    text="Date"        prefWidth="110.0"/>
+                <TableColumn fx:id="colPayMethod"  text="Method"      prefWidth="120.0"/>
+                <TableColumn fx:id="colPayDesc"    text="Description" prefWidth="180.0"/>
+                <TableColumn fx:id="colPayStatus"  text="Status"      prefWidth="90.0"/>
+                <TableColumn fx:id="colPayRemaining" text="Remaining Fees" prefWidth="130.0"/>
+            </columns>
+            <placeholder>
+                <Label text="No payments found." style="-fx-text-fill: #a8a8b3;"/>
+            </placeholder>
+        </TableView>
+
+    </VBox>
+
+</AnchorPane>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.oop.controller.RoomController"
+            style="-fx-background-color: #1a1a2e;">
+
+    <VBox spacing="20.0"
+          AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding><Insets top="30.0" bottom="30.0" left="30.0" right="30.0"/></padding>
+
+        <!-- Header Row -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label text="🚪  Room Management"
+                   style="-fx-text-fill: #ffffff; -fx-font-weight: bold;">
+                <font><Font name="System Bold" size="22.0"/></font>
+            </Label>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <ComboBox fx:id="filterStatus" promptText="Filter by status"
+                      prefHeight="36.0" prefWidth="160.0"
+                      style="-fx-background-color: #16213e; -fx-text-fill: #ffffff; -fx-background-radius: 8; -fx-border-color: #0f3460; -fx-border-radius: 8; -fx-border-width: 1;">
+            </ComboBox>
+            <Button text="+ Add Room" onAction="#showAddRoomDialog" prefHeight="36.0"
+                    style="-fx-background-color: #e94560; -fx-text-fill: white; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-weight: bold;">
+                <font><Font size="13.0"/></font>
+            </Button>
+        </HBox>
+
+        <!-- Summary Cards -->
+        <HBox spacing="15.0">
+            <VBox prefWidth="160.0" prefHeight="80.0" alignment="CENTER" spacing="5.0"
+                  style="-fx-background-color: #16213e; -fx-background-radius: 10;">
+                <Label fx:id="totalRoomsCard" text="0"
+                       style="-fx-text-fill: #e94560; -fx-font-weight: bold;">
+                    <font><Font name="System Bold" size="26.0"/></font>
+                </Label>
+                <Label text="Total Rooms" style="-fx-text-fill: #a8a8b3;"><font><Font size="12.0"/></font></Label>
+            </VBox>
+            <VBox prefWidth="160.0" prefHeight="80.0" alignment="CENTER" spacing="5.0"
+                  style="-fx-background-color: #16213e; -fx-background-radius: 10;">
+                <Label fx:id="vacantCard" text="0"
+                       style="-fx-text-fill: #4ade80; -fx-font-weight: bold;">
+                    <font><Font name="System Bold" size="26.0"/></font>
+                </Label>
+                <Label text="Vacant" style="-fx-text-fill: #a8a8b3;"><font><Font size="12.0"/></font></Label>
+            </VBox>
+            <VBox prefWidth="160.0" prefHeight="80.0" alignment="CENTER" spacing="5.0"
+                  style="-fx-background-color: #16213e; -fx-background-radius: 10;">
+                <Label fx:id="partialCard" text="0"
+                       style="-fx-text-fill: #facc15; -fx-font-weight: bold;">
+                    <font><Font name="System Bold" size="26.0"/></font>
+                </Label>
+                <Label text="Partial" style="-fx-text-fill: #a8a8b3;"><font><Font size="12.0"/></font></Label>
+            </VBox>
+            <VBox prefWidth="160.0" prefHeight="80.0" alignment="CENTER" spacing="5.0"
+                  style="-fx-background-color: #16213e; -fx-background-radius: 10;">
+                <Label fx:id="fullCard" text="0"
+                       style="-fx-text-fill: #f87171; -fx-font-weight: bold;">
+                    <font><Font name="System Bold" size="26.0"/></font>
+                </Label>
+                <Label text="Full" style="-fx-text-fill: #a8a8b3;"><font><Font size="12.0"/></font></Label>
+            </VBox>
+        </HBox>
+
+        <!-- Table -->
+        <TableView fx:id="roomTable" VBox.vgrow="ALWAYS"
+                   style="-fx-background-color: #16213e; -fx-background-radius: 12; -fx-border-color: transparent;">
+            <columns>
+                <TableColumn fx:id="colRoomNo"    text="Room No."   prefWidth="90.0"/>
+                <TableColumn fx:id="colType"      text="Type"       prefWidth="80.0"/>
+                <TableColumn fx:id="colBlock"     text="Block"      prefWidth="70.0"/>
+                <TableColumn fx:id="colFloor"     text="Floor"      prefWidth="60.0"/>
+                <TableColumn fx:id="colCapacity"  text="Capacity"   prefWidth="80.0"/>
+                <TableColumn fx:id="colOccupied"  text="Occupied"   prefWidth="80.0"/>
+                <TableColumn fx:id="colPrice"     text="Price/Mo"   prefWidth="100.0"/>
+                <TableColumn fx:id="colRoomStatus" text="Status"    prefWidth="130.0"/>
+                <TableColumn fx:id="colRoomActions" text="Actions"  prefWidth="140.0"/>
+            </columns>
+            <placeholder>
+                <Label text="No rooms found." style="-fx-text-fill: #a8a8b3;"/>
+            </placeholder>
+        </TableView>
+
+    </VBox>
+
+</AnchorPane>
